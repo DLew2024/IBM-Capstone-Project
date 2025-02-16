@@ -1,6 +1,14 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/dist/css/Signup.css';
 
 const SignUp = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [showerr, setShowerr] = useState(''); // State to show error messages
+  const navigate = useNavigate(); // Navigation hook from react-router
   return (
     <div className="container" style={{ marginTop: '5%' }}>
       {/* Main container with margin-top */}
@@ -14,7 +22,7 @@ const SignUp = () => {
           {/* Text for existing members to log in */}
           Already a member?
           <span>
-            <a href="../Login/Login.html" style={{ color: '#2190FF' }}>
+            <a href="#" style={{ color: '#2190FF' }}>
               Login
             </a>
           </span>
@@ -30,11 +38,18 @@ const SignUp = () => {
                 type="text"
                 name="name"
                 id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
                 className="form-control"
                 placeholder="Enter your name"
                 aria-describedby="helpId"
               />
+              {showerr && (
+                <div className="err" style={{ color: 'red' }}>
+                  {showerr}
+                </div>
+              )}
             </div>
             <div className="form-group">
               {/* Form group for user's phone number */}
@@ -43,11 +58,18 @@ const SignUp = () => {
                 type="tel"
                 name="phone"
                 id="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
                 className="form-control"
                 placeholder="Enter your phone number"
                 aria-describedby="helpId"
               />
+              {showerr && (
+                <div className="err" style={{ color: 'red' }}>
+                  {showerr}
+                </div>
+              )}
             </div>
             <div className="form-group">
               {/* Form group for user's email */}
@@ -56,11 +78,18 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="form-control"
                 placeholder="Enter your email"
                 aria-describedby="helpId"
               />
+              {showerr && (
+                <div className="err" style={{ color: 'red' }}>
+                  {showerr}
+                </div>
+              )}
             </div>
             <div className="form-group">
               {/* Form group for user's password */}
@@ -69,11 +98,18 @@ const SignUp = () => {
                 type="password"
                 name="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 className="form-control"
                 placeholder="Enter your password"
                 aria-describedby="helpId"
               />
+              {showerr && (
+                <div className="err" style={{ color: 'red' }}>
+                  {showerr}
+                </div>
+              )}
             </div>
             <div className="btn-group">
               {/* Button group for form submission and reset */}
